@@ -17,12 +17,12 @@ import razorPoster from "../assets/bmw-m3-gtr-nfs-hd-04.webp";
 import ps2Disc from "../assets/playstation2 disc.png";
 
 const carGallery = [
-	{ image: bmwM3, alt: "Silver and blue BMW M3 GTR on a Rockport highway", model: "BMW M3 GTR", caption: "THE ONE THEY TOOK." },
-	{ image: bmwM3Archive, alt: "BMW M3 GTR from Need for Speed Most Wanted", model: "BMW M3 GTR", caption: "THE ROCKPORT LEGEND." },
-	{ image: bmwM3Detail, alt: "BMW M3 GTR in a Rockport street scene", model: "BMW M3 GTR", caption: "BUILT TO GET AWAY." },
-	{ image: bmwM3Street, alt: "BMW M3 GTR racing through the city", model: "BMW M3 GTR", caption: "NO LOOKING BACK." },
-	{ image: bmwM3Garage, alt: "BMW M3 GTR parked in a garage", model: "BMW M3 GTR", caption: "A MACHINE RECLAIMED." },
-	{ image: mercedesMcLaren, alt: "Mercedes McLaren on a Rockport road", model: "MERCEDES MCLAREN", caption: "A RIVAL ON THE STREETS." },
+	{ image: bmwM3, alt: "Silver and blue BMW M3 GTR on a Rockport highway", model: "BMW M3 GTR" },
+	{ image: bmwM3Archive, alt: "BMW M3 GTR from Need for Speed Most Wanted", model: "BMW M3 GTR" },
+	{ image: bmwM3Detail, alt: "BMW M3 GTR in a Rockport street scene", model: "BMW M3 GTR" },
+	{ image: bmwM3Street, alt: "BMW M3 GTR racing through the city", model: "BMW M3 GTR" },
+	{ image: bmwM3Garage, alt: "BMW M3 GTR parked in a garage", model: "BMW M3 GTR" },
+	{ image: mercedesMcLaren, alt: "Mercedes McLaren on a Rockport road", model: "MERCEDES MCLAREN" },
 ];
 
 const specs = [
@@ -104,13 +104,13 @@ const specs = [
 					</div>
 					<figure class="car-visual" id="car-carousel" role="region" aria-roledescription="carousel" aria-label="Need for Speed car gallery" tabindex="0">
 						{carGallery.map((car, index) => (
-							<div class="car-slide" data-car-slide data-model={car.model} data-caption={car.caption} role="group" aria-roledescription="slide" aria-label={`${index + 1} of ${carGallery.length}: ${car.model}`} aria-hidden={index !== 0} hidden={index !== 0}>
-								<img class="car-carousel-image" src={car.image.src} alt={car.alt} loading={index === 0 ? "eager" : "lazy"} />
+							<div class="car-slide" data-car-slide data-model={car.model} role="group" aria-roledescription="slide" aria-label={`${index + 1} of ${carGallery.length}: ${car.model}`} aria-hidden={index !== 0} hidden={index !== 0}>
+								<img class="car-carousel-image" src={car.image.src} alt={car.alt} loading="eager" />
 							</div>
 						))}
 						<div class="car-visual-shade"></div>
 						<figcaption class="car-visual-caption">
-							<div><span class="caption-overline" id="car-model">{carGallery[0].model}</span><strong id="car-caption">{carGallery[0].caption}</strong></div>
+							<div><strong id="car-model">{carGallery[0].model}</strong></div>
 							<div class="car-carousel-controls" aria-label="Carousel controls">
 								<button class="car-carousel-control" type="button" data-car-previous aria-label="Previous car image">‹</button>
 								<span class="car-plate" id="car-carousel-status" aria-live="polite" aria-atomic="true">01 / {String(carGallery.length).padStart(2, "0")}</span>
@@ -170,7 +170,6 @@ const specs = [
 			if (carCarousel) {
 				const carSlides = Array.from(carCarousel.querySelectorAll("[data-car-slide]"));
 				const carModel = carCarousel.querySelector("#car-model");
-				const carCaption = carCarousel.querySelector("#car-caption");
 				const carStatus = carCarousel.querySelector("#car-carousel-status");
 				let currentCarSlide = 0;
 
@@ -183,7 +182,6 @@ const specs = [
 						slide.setAttribute("aria-hidden", String(!isActive));
 					});
 					carModel.textContent = activeSlide.dataset.model;
-					carCaption.textContent = activeSlide.dataset.caption;
 					carStatus.textContent = `${String(currentCarSlide + 1).padStart(2, "0")} / ${String(carSlides.length).padStart(2, "0")}`;
 				}
 
@@ -193,6 +191,7 @@ const specs = [
 					if (event.key === "ArrowLeft") showCarSlide(currentCarSlide - 1);
 					if (event.key === "ArrowRight") showCarSlide(currentCarSlide + 1);
 				});
+				window.setInterval(() => showCarSlide(currentCarSlide + 1), 3000);
 			}
 
 			let musicPlayer;
