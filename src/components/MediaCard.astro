@@ -7,9 +7,10 @@ interface Props {
 	image: string;
 	alt: string;
 	mediaSrc?: string;
+	showStillLink?: boolean;
 }
 
-const { index, title, eyebrow, description, image, alt, mediaSrc } = Astro.props;
+const { index, title, eyebrow, description, image, alt, mediaSrc, showStillLink = true } = Astro.props;
 ---
 
 <article class="media-card">
@@ -20,10 +21,14 @@ const { index, title, eyebrow, description, image, alt, mediaSrc } = Astro.props
 				Your browser does not support embedded video.
 			</video>
 		) : (
-			<a class="still-link" href={image} target="_blank" rel="noreferrer" aria-label={`Open the ${title} still image`}>
+			showStillLink ? (
+				<a class="still-link" href={image} target="_blank" rel="noreferrer" aria-label={`Open the ${title} still image`}>
+					<img src={image} alt={alt} loading="lazy" />
+					<span class="still-action"><span class="play-glyph" aria-hidden="true">↗</span><span>VIEW FRAME</span></span>
+				</a>
+			) : (
 				<img src={image} alt={alt} loading="lazy" />
-				<span class="still-action"><span class="play-glyph" aria-hidden="true">↗</span><span>VIEW FRAME</span></span>
-			</a>
+			)
 		)}
 		<span class="media-counter" aria-hidden="true">{index} / 02</span>
 	</div>
