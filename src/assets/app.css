@@ -53,7 +53,6 @@ a { color: inherit; text-decoration: none; }
 .main-nav a::after { position: absolute; right: 0; bottom: 5px; left: 0; height: 2px; background: var(--bright-amber); content: ""; transform: scaleX(0); transform-origin: left; transition: transform .2s ease; }
 .main-nav a:hover, .main-nav a:focus-visible { color: var(--bright-amber); }
 .main-nav a:hover::after, .main-nav a:focus-visible::after { transform: scaleX(1); }
-.nav-year { color: var(--bright-amber); font-size: 10px; letter-spacing: .13em; }
 .music-toggle { display: grid; width: 38px; height: 38px; flex: 0 0 auto; place-items: center; border: 1px solid rgba(255,183,0,.48); background: rgba(12,12,14,.6); color: var(--bright-amber); cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease; }
 .music-toggle:hover, .music-toggle:focus-visible { border-color: var(--bright-amber); background: var(--bright-amber); color: var(--black); }
 .music-toggle svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
@@ -65,7 +64,7 @@ a { color: inherit; text-decoration: none; }
 .music-player iframe { position: absolute; top: 0; left: 0; width: 200px; height: 200px; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 .hero-copy { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; padding-block: 70px 95px; }
-.hero-kicker, .section-kicker, .spec-heading, .media-eyebrow, .caption-overline { color: var(--bright-amber); font-size: 10px; font-weight: 900; letter-spacing: .2em; }
+.hero-kicker, .section-kicker, .spec-heading, .media-eyebrow { color: var(--bright-amber); font-size: 10px; font-weight: 900; letter-spacing: .2em; }
 .hero-kicker { display: flex; align-items: center; gap: 11px; margin-bottom: 24px; }
 .status-light, .hero-bottom-center i { width: 7px; height: 7px; border-radius: 50%; background: var(--bright-amber); box-shadow: 0 0 10px var(--bright-amber); }
 .kicker-line { width: 12px; height: 1px; background: rgba(255,183,0,.55); }
@@ -99,7 +98,6 @@ a { color: inherit; text-decoration: none; }
 .section-kicker span { margin-right: 9px; color: #fff; }
 .section-heading h2, .disc-copy h3 { margin: 0; font-size: clamp(45px, 6.4vw, 82px); font-style: italic; letter-spacing: -.045em; line-height: .9; }
 .section-heading h2 em, .disc-copy h3 em { color: var(--bright-amber); font-style: inherit; }
-.section-aside { margin: 0 0 2px; color: var(--muted); font-size: 13px; line-height: 1.65; text-align: right; }
 .car-visual { position: relative; min-height: 280px; aspect-ratio: 2.65 / 1; margin: 0 0 32px; overflow: hidden; border: 1px solid rgba(255,183,0,.42); background: #232323; box-shadow: 0 20px 46px rgba(0,0,0,.5), 8px 8px 0 rgba(230,161,0,.09); clip-path: polygon(2% 0, 100% 0, 100% 87%, 98% 100%, 0 100%, 0 13%); }
 .car-slide { position: absolute; inset: 0; }
 .car-slide[hidden] { display: none; }
@@ -108,7 +106,6 @@ a { color: inherit; text-decoration: none; }
 .car-visual-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7,8,9,.78), transparent 60%), linear-gradient(0deg, rgba(7,8,9,.7), transparent 42%); }
 .car-visual-caption { position: absolute; right: 30px; bottom: 27px; left: 35px; display: flex; align-items: end; justify-content: space-between; gap: 18px; }
 .car-visual-caption > div:first-child { display: grid; gap: 7px; }
-.caption-overline { color: var(--bright-amber); }
 .car-visual-caption strong { font-size: clamp(20px, 3.2vw, 38px); font-style: italic; letter-spacing: .01em; text-shadow: 2px 3px 6px #000; }
 .car-carousel-controls { display: flex; align-items: center; gap: 7px; }
 .car-carousel-control { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(255,255,255,.43); background: rgba(12,12,14,.78); color: var(--bright-amber); cursor: pointer; font: inherit; font-size: 23px; line-height: 1; transition: border-color .2s ease, background .2s ease, color .2s ease; }
@@ -176,7 +173,6 @@ a { color: inherit; text-decoration: none; }
 .footer-inner p { max-width: 520px; margin: 0; color: #77756f; font-size: 8px; letter-spacing: .13em; line-height: 1.65; text-align: center; }
 .back-top { white-space: nowrap; color: var(--bright-amber); font-size: 9px; font-weight: 900; letter-spacing: .12em; }
 
-@keyframes slow-drift { from { transform: scale(1.015); } to { transform: scale(1.075) translate3d(-.7%, -.5%, 0); } }
 @keyframes disc-spin { to { transform: rotate(360deg); } }
 
 @media (max-width: 760px) {
@@ -189,7 +185,6 @@ a { color: inherit; text-decoration: none; }
 	.brand-wordmark { width: min(160px, 27vw); height: 40px; }
 	.main-nav { gap: 15px; font-size: 9px; }
 	.main-nav a { letter-spacing: .1em; }
-	.nav-year { display: none; }
 	.music-toggle { width: 34px; height: 34px; }
 	.hero-copy { padding-block: 60px 80px; }
 	.hero h1 { font-size: clamp(70px, 17vw, 120px); }
@@ -199,7 +194,6 @@ a { color: inherit; text-decoration: none; }
 	.hero-bottom > span:last-child { max-width: 80px; text-align: right; }
 	.hero-bottom-center { font-size: 7px; }
 	.section-heading { align-items: start; }
-	.section-aside { padding-top: 19px; font-size: 11px; }
 	.car-visual { min-height: 260px; aspect-ratio: 1.6 / 1; }
 	.car-carousel-image { object-position: 62% center; }
 	.car-visual-caption { right: 20px; bottom: 20px; left: 20px; }
@@ -246,12 +240,10 @@ a { color: inherit; text-decoration: none; }
 	.section-pad { padding-block: 65px; }
 	.section-heading { display: block; margin-bottom: 25px; }
 	.section-heading h2 { font-size: 52px; }
-	.section-aside { padding-top: 12px; text-align: left; }
 	.car-visual { min-height: 225px; aspect-ratio: 1.25 / 1; }
 	.car-visual > img { object-position: 64% center; }
 	.image-coordinate { top: 11px; right: 12px; font-size: 6px; }
 	.car-visual-caption { right: 12px; bottom: 15px; left: 14px; }
-	.caption-overline { font-size: 8px; }
 	.car-visual-caption strong { font-size: 21px; }
 	.car-plate { font-size: 7px; letter-spacing: .08em; }
 	.spec-heading { font-size: 7px; letter-spacing: .12em; }
@@ -281,14 +273,12 @@ a { color: inherit; text-decoration: none; }
 
 /* Keep interface labels and supporting copy comfortably readable. */
 .main-nav { font-size: 15px; }
-.nav-year { font-size: 13px; }
-.hero-kicker, .section-kicker, .media-eyebrow, .caption-overline { font-size: 14px; }
+.hero-kicker, .section-kicker, .media-eyebrow { font-size: 14px; }
 .hero-description { font-size: clamp(18px, 1.6vw, 21px); }
 .skew-button.btn { font-size: 15px; }
 .text-link { font-size: 14px; }
 .hero-side-note { font-size: 12px; }
 .hero-bottom { font-size: 12px; }
-.section-aside { font-size: 17px; }
 .car-plate { font-size: 13px; }
 .image-coordinate { font-size: 11px; }
 .spec-heading { font-size: 13px; }
@@ -303,7 +293,6 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 760px) {
 	.main-nav { font-size: 13px; }
 	.hero-bottom, .hero-bottom-center { font-size: 10px; }
-	.section-aside { font-size: 16px; }
 	.car-plate { font-size: 12px; }
 	.spec-label { font-size: 12px; }
 }
@@ -323,7 +312,6 @@ a { color: inherit; text-decoration: none; }
 	.hero-bottom > span:last-child { max-width: none; }
 	.hero-bottom-center { gap: 5px; font-size: 9px; }
 	.image-coordinate { font-size: 9px; }
-	.caption-overline { font-size: 11px; }
 	.car-plate { font-size: 10px; }
 	.spec-heading { font-size: 10px; }
 	.spec-index, .spec-label { font-size: 10px; }
@@ -344,7 +332,6 @@ a { color: inherit; text-decoration: none; }
 	.site-header.menu-open .main-nav { opacity: 1; visibility: visible; transform: translateY(0); }
 	.main-nav a { padding: 14px 2px; border-bottom: 1px solid rgba(255,255,255,.12); font-size: 14px; }
 	.main-nav a::after { bottom: 5px; right: auto; width: 50px; }
-	.nav-year { padding-block: 15px; font-size: 12px; }
 	.main-nav .music-toggle { align-self: flex-start; }
 	.site-header.menu-open .menu-toggle span:first-child { transform: translateY(7px) rotate(45deg); }
 	.site-header.menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
