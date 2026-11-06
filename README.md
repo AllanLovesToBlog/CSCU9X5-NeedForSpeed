@@ -1,43 +1,25 @@
-# Astro Starter Kit: Minimal
+# Need for Speed: Most Wanted - The Blacklist Archive
+
+A fan-made archive celebrating *Need for Speed: Most Wanted* (2005), featuring the BMW M3 GTR, Rockport, and material from the game's opening and Blacklist.
+
+## Run locally
+
+You’ll need [Node.js](https://nodejs.org/) 22.12.0 or later and Git installed. In a terminal, clone the repository (replace `<repository-url>` with its Git URL), install dependencies, and start the development server:
 
 ```sh
-npm create astro@latest -- --template minimal
+git clone <repository-url> CSCU9X5
+cd CSCU9X5
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Open the local URL printed in the terminal (usually `http://localhost:4321`). Stop the server with `Ctrl+C`.
 
-## 🚀 Project Structure
+## Other commands
 
-Inside of your Astro project, you'll see the following folders and files:
+Run these from the project directory:
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| Command | Action |
+| --- | --- |
+| `npm run build` | Build the production site into `dist/`. |
+| `npm run preview` | Preview the production build locally. |

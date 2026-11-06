@@ -2,19 +2,24 @@
 import "../assets/app.css";
 import SpecCard from "../components/SpecCard.astro";
 import MediaCard from "../components/MediaCard.astro";
-import icon from "../assets/icon.png";
-import logo from "../assets/logo.png";
-import openingIntro from "../assets/opening_intro.webp";
-import introVideo from "../assets/need_for_speed_most_wanted_intro_4k_remastered.mp4";
-import spinnerVideo from "../assets/website_spinner.mp4";
-import bmwM3 from "../assets/bmw_m3_gtr.png";
-import bmwM3Archive from "../assets/bmw-m3-gtr-from-2005-s-need-for-speed-most-wanted.webp";
-import bmwM3Detail from "../assets/bmw-m3-gtr-nfs-hd-04.webp";
-import bmwM3Street from "../assets/bmw-m3-gtr-nfs-hd-05.webp";
-import bmwM3Garage from "../assets/bmw-m3-gtr-nfs-hd-14.jpg";
-import mercedesMcLaren from "../assets/mercedes_mclaren.png";
-import razorPoster from "../assets/bmw-m3-gtr-nfs-hd-04.webp";
-import ps2Disc from "../assets/playstation2_disc.png";
+
+const publicAsset = (filename: string) => `${import.meta.env.BASE_URL}assets/${filename}`;
+const icon = publicAsset("icon.png");
+const logo = publicAsset("logo.png");
+const openingIntro = publicAsset("opening_intro.jpg");
+const introVideo = publicAsset("need_for_speed_most_wanted_intro_4k_remastered.mp4");
+const introVideoWebm = publicAsset("need_for_speed_most_wanted_intro_4k_remastered.webm");
+const spinnerVideo = publicAsset("website_spinner.mp4");
+const spinnerVideoWebm = publicAsset("website_spinner.webm");
+const heatLevelIcon = publicAsset("heat_level_6.jpg");
+const bmwM3 = publicAsset("bmw_m3_gtr.png");
+const bmwM3Archive = publicAsset("bmw-m3-gtr-from-2005-s-need-for-speed-most-wanted.webp");
+const bmwM3Detail = publicAsset("bmw-m3-gtr-nfs-hd-04.webp");
+const bmwM3Street = publicAsset("bmw-m3-gtr-nfs-hd-05.webp");
+const bmwM3Garage = publicAsset("bmw-m3-gtr-nfs-hd-14.jpg");
+const mercedesMcLaren = publicAsset("mercedes_mclaren.png");
+const razorPoster = bmwM3Detail;
+const ps2Disc = publicAsset("playstation2_disc.png");
 
 const carGallery = [
 	{ image: bmwM3, alt: "Silver and blue BMW M3 GTR on a Rockport highway", model: "BMW M3 GTR" },
@@ -38,31 +43,33 @@ const specs = [
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href={icon.src} />
+		<link rel="icon" type="image/png" href={icon} />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="theme-color" content="#0d0d0f" />
 		<meta name="description" content="A fan-made archive celebrating Need for Speed: Most Wanted (2005), the BMW M3 GTR, and Rockport's most wanted." />
-		<title>Need for Speed: Most Wanted (2005) — The Blacklist Archive</title>
+		<title>Need for Speed: Most Wanted (2005) - The Blacklist Archive</title>
 	</head>
 	<body>
 		<div class="intro-splash" id="intro-splash" aria-hidden="true">
-			<video class="intro-splash-video" autoplay muted playsinline preload="auto">
+			<video class="intro-splash-video" autoplay muted playsinline preload="auto" poster={openingIntro}>
 				<source src={spinnerVideo} type="video/mp4" />
+				<source src={spinnerVideoWebm} type="video/webm" />
 			</video>
 		</div>
 		<section class="hero" id="top" aria-labelledby="hero-title">
 			<div class="hero-backdrop" aria-hidden="true">
-				<video class="hero-backdrop-video" autoplay muted loop playsinline preload="auto" poster={openingIntro.src}>
+				<video class="hero-backdrop-video" autoplay muted loop playsinline preload="auto" poster={openingIntro}>
 					<source src={introVideo} type="video/mp4" />
+					<source src={introVideoWebm} type="video/webm" />
 				</video>
 				<div class="hero-shade"></div>
 			</div>
 			<div class="hero-grit" aria-hidden="true"></div>
 			<header class="site-header page-wrap">
 				<a class="brand" href="#top" aria-label="Most Wanted archive home">
-					<img class="brand-icon" src={icon.src} alt="" />
-					<img class="brand-wordmark" src={logo.src} alt="Need for Speed Most Wanted" />
+					<img class="brand-icon" src={icon} alt="" />
+					<img class="brand-wordmark" src={logo} alt="Need for Speed Most Wanted" />
 				</a>
 				<button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="main-navigation" aria-expanded="false">
 					<span></span><span></span><span></span>
@@ -84,16 +91,16 @@ const specs = [
 			<div class="hero-copy page-wrap">
 				<div class="hero-kicker"><span class="status-light"></span> BLACKLIST DOSSIER <span class="kicker-line"></span> 11.15.05</div>
 				<h1 id="hero-title"><span>THE MOST</span><span class="wanted-word">WANTED<span class="title-asterisk">*</span></span><span class="hero-edition">(2005)</span></h1>
-				<p class="hero-description">One city. Fifteen rivals. One car worth taking it all back.</p>
+				<p class="hero-description">Fifteen rivals but only one becomes Rockport's most wanted driver.</p>
 				<div class="hero-actions">
 					<a class="btn btn-primary skew-button" href="#m3"><span>MEET THE LEGEND <b aria-hidden="true">↘</b></span></a>
 					<a class="text-link" href="#archive"><span>ENTER THE ARCHIVE</span><b aria-hidden="true">+</b></a>
 				</div>
 				<div class="hero-side-note" aria-hidden="true"><span>01 / 15</span><i></i><span>YOU ARE ON THE LIST</span></div>
 			</div>
-			<div class="hero-bottom page-wrap" aria-hidden="true">
-				<span>FAIRHAVEN? NO. ROCKPORT CITY.</span>
-				<span class="hero-bottom-center"><i></i> WANTED LEVEL: <b>MAX</b></span>
+			<div class="hero-bottom page-wrap">
+				<span>ROCKPORT CITY.</span>
+				<span class="hero-bottom-center">WANTED LEVEL: <img class="wanted-level-icon" src={heatLevelIcon} alt="Heat level 6" /></span>
 				<span>SCROLL TO EXPLORE <b>↓</b></span>
 			</div>
 		</section>
@@ -103,12 +110,11 @@ const specs = [
 				<div class="page-wrap">
 					<div class="section-heading">
 						<div><p class="section-kicker"><span>01</span> THE GETAWAY CAR</p><h2 id="car-title">THE <em>LEGEND.</em></h2></div>
-						<p class="section-aside">A machine built to disappear.<br />A name impossible to forget.</p>
 					</div>
 					<figure class="car-visual" id="car-carousel" role="region" aria-roledescription="carousel" aria-label="Need for Speed car gallery" tabindex="0">
 						{carGallery.map((car, index) => (
 							<div class="car-slide" data-car-slide data-model={car.model} role="group" aria-roledescription="slide" aria-label={`${index + 1} of ${carGallery.length}: ${car.model}`} aria-hidden={index !== 0} hidden={index !== 0}>
-								<img class="car-carousel-image" src={car.image.src} alt={car.alt} loading="eager" />
+								<img class="car-carousel-image" src={car.image} alt={car.alt} loading="eager" />
 							</div>
 						))}
 						<div class="car-visual-shade"></div>
@@ -133,21 +139,20 @@ const specs = [
 				<div class="page-wrap">
 					<div class="section-heading archive-heading">
 						<div><p class="section-kicker"><span>02</span> EVIDENCE LOCKER</p><h2 id="archive-title">THE <em>ARCHIVE.</em></h2></div>
-						<p class="section-aside">Recovered from the streets<br />and the start screen.</p>
 					</div>
 					<div class="media-grid">
-						<MediaCard index="A" title="Razor's Intro" eyebrow="BLACKLIST #01" description="The callout that started the chase. Play the recovered intro." image={razorPoster.src} alt="BMW M3 GTR in a smoky Rockport street scene" mediaSrc="/razor-intro.mp4" />
-						<MediaCard index="B" title="Game Intro" eyebrow="OPENING FRAME" description="A still from the opening sequence, preserved from the original game." image={openingIntro.src} alt="Need for Speed Most Wanted opening sequence still" showStillLink={false} />
+						<MediaCard index="A" title="Razor's Intro" eyebrow="BLACKLIST #01" image={razorPoster} alt="BMW M3 GTR in a smoky Rockport street scene" mediaSrc="/razor-intro.webm" />
+						<MediaCard index="B" title="Game Intro" eyebrow="OPENING FRAME" image={openingIntro} alt="Need for Speed Most Wanted opening sequence still" showStillLink={false} />
 					</div>
 
 					<div class="disc-archive">
 						<div class="disc-copy">
 							<p class="section-kicker"><span>03</span> PHYSICAL MEDIA</p>
-							<h3>THE DISC.<br /><em>THE LEGEND.</em></h3>
-							<p>Before the blacklist was a legend, it was a disc on your shelf. Original Rockport-era hardware, preserved for the record.</p>
+							<h3>Get it now on PS2 consoles</h3>
+							<p>Available while stocks last. Original game media protected by copyright law; unauthorised reproduction is prohibited.</p>
 							<span class="disc-stamp">PS2 · NTSC · 2005</span>
 						</div>
-						<div class="disc-art-wrap"><img class="disc-art" src={ps2Disc.src} alt="PlayStation 2 Need for Speed Most Wanted game disc" loading="lazy" /><span class="disc-orbit" aria-hidden="true"></span><span class="disc-tag" aria-hidden="true">ARCHIVE<br />ORIGINAL</span></div>
+						<div class="disc-art-wrap"><img class="disc-art" src={ps2Disc} alt="PlayStation 2 Need for Speed Most Wanted game disc" loading="lazy" /><span class="disc-orbit" aria-hidden="true"></span><span class="disc-tag" aria-hidden="true">ARCHIVE<br />ORIGINAL</span></div>
 					</div>
 				</div>
 			</section>
@@ -155,7 +160,7 @@ const specs = [
 
 		<footer class="site-footer">
 			<div class="page-wrap footer-inner">
-				<a href="#top" class="footer-brand">MOST WANTED <span>2005</span></a>
+				<a href="#top" class="footer-brand" aria-label="Need for Speed Most Wanted archive home"><img class="footer-logo" src={logo} alt="Need for Speed Most Wanted" /></a>
 				<p>AN UNOFFICIAL FAN-MADE ARCHIVE. NEED FOR SPEED AND ALL RELATED MARKS BELONG TO THEIR RESPECTIVE OWNERS.</p>
 				<a class="back-top" href="#top">BACK TO TOP ↑</a>
 			</div>

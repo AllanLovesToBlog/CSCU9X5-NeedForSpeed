@@ -3,7 +3,7 @@ interface Props {
 	index: string;
 	title: string;
 	eyebrow: string;
-	description: string;
+	description?: string;
 	image: string;
 	alt: string;
 	mediaSrc?: string;
@@ -17,7 +17,7 @@ const { index, title, eyebrow, description, image, alt, mediaSrc, showStillLink 
 	<div class="media-frame">
 		{mediaSrc ? (
 			<video autoplay muted loop playsinline preload="auto" poster={image} aria-label={title}>
-				<source src={mediaSrc} type="video/mp4" />
+				<source src={mediaSrc} type="video/webm" />
 				Your browser does not support embedded video.
 			</video>
 		) : (
@@ -35,6 +35,6 @@ const { index, title, eyebrow, description, image, alt, mediaSrc, showStillLink 
 	<div class="media-copy">
 		<div class="media-heading"><span class="media-eyebrow">{eyebrow}</span><span class="media-mark" aria-hidden="true">✳</span></div>
 		<h3>{title}</h3>
-		<p>{description}</p>
+		{description && <p>{description}</p>}
 	</div>
 </article>
