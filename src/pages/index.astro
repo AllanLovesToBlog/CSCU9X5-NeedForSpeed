@@ -1,11 +1,11 @@
 ---
-import "../assets/app.css";
 import SpecCard from "../components/SpecCard.astro";
 import MediaCard from "../components/MediaCard.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
 
 const publicAsset = (filename: string) => `${import.meta.env.BASE_URL}assets/${filename}`;
-const icon = publicAsset("icon.png");
-const logo = publicAsset("logo.png");
 const openingIntro = publicAsset("nfsmw_menu_screen.png");
 const introVideo = publicAsset("need_for_speed_most_wanted_intro_4k_remastered.mp4");
 const introVideoWebm = publicAsset("need_for_speed_most_wanted_intro_4k_remastered.webm");
@@ -40,17 +40,7 @@ const specs = [
 ];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href={icon} />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="theme-color" content="#0d0d0f" />
-		<meta name="description" content="A fan-made archive celebrating Need for Speed: Most Wanted (2005), the BMW M3 GTR, and Rockport's most wanted." />
-		<title>Need for Speed: Most Wanted (2005) - The Blacklist Archive</title>
-	</head>
-	<body>
+	<SiteLayout title="Need for Speed: Most Wanted (2005) - The Blacklist Archive" description="A fan-made archive celebrating Need for Speed: Most Wanted (2005), the BMW M3 GTR, and Rockport's most wanted.">
 		<div class="intro-splash" id="intro-splash" aria-hidden="true">
 			<video class="intro-splash-video" autoplay muted playsinline preload="auto" poster={openingIntro}>
 				<source src={spinnerVideo} type="video/mp4" />
@@ -66,27 +56,7 @@ const specs = [
 				<div class="hero-shade"></div>
 			</div>
 			<div class="hero-grit" aria-hidden="true"></div>
-			<header class="site-header page-wrap">
-				<a class="brand" href="#top" aria-label="Most Wanted archive home">
-					<img class="brand-icon" src={icon} alt="" />
-					<img class="brand-wordmark" src={logo} alt="Need for Speed Most Wanted" />
-				</a>
-				<button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="main-navigation" aria-expanded="false">
-					<span></span><span></span><span></span>
-				</button>
-				<nav class="main-nav" id="main-navigation" aria-label="Main navigation">
-					<a href="#m3">THE CAR</a>
-					<a href="#archive">THE ARCHIVE</a>
-					<span class="nav-year">ROCKPORT · 2005</span>
-					<button class="music-toggle" id="music-toggle" type="button" aria-label="Mute background music" aria-pressed="false">
-						<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-							<path d="M4 10v4h3l5 4V6l-5 4H4Z" />
-							<path class="music-waves" d="M15 9a4 4 0 0 1 0 6m2-9a7 7 0 0 1 0 12" />
-							<path class="music-muted" d="m16 9 5 6m0-6-5 6" />
-						</svg>
-					</button>
-				</nav>
-			</header>
+			<SiteHeader activePage="home" landing showMusic />
 
 			<div class="hero-copy page-wrap">
 				<div class="hero-kicker"><span class="status-light"></span> BLACKLIST DOSSIER <span class="kicker-line"></span> 11.15.05</div>
@@ -141,7 +111,7 @@ const specs = [
 						<div><p class="section-kicker"><span>02</span> EVIDENCE LOCKER</p><h2 id="archive-title">THE <em>ARCHIVE.</em></h2></div>
 					</div>
 					<div class="media-grid">
-						<MediaCard index="A" title="Razor's Intro" eyebrow="BLACKLIST #01" image={razorPoster} alt="BMW M3 GTR in a smoky Rockport street scene" mediaSrc="/razor-intro.webm" />
+						<MediaCard index="A" title="Razor's Intro" eyebrow="BLACKLIST #01" image={razorPoster} alt="BMW M3 GTR in a smoky Rockport street scene" mediaSrc={publicAsset("blacklist_1_razors_intro.webm")} />
 						<MediaCard index="B" title="Game Intro" eyebrow="OPENING FRAME" image={openingIntro} alt="Need for Speed Most Wanted opening sequence still" showStillLink={false} />
 					</div>
 
@@ -158,44 +128,11 @@ const specs = [
 			</section>
 		</main>
 
-		<footer class="site-footer">
-			<div class="page-wrap footer-inner">
-				<a href="#top" class="footer-brand" aria-label="Need for Speed Most Wanted archive home"><img class="footer-logo" src={logo} alt="Need for Speed Most Wanted" /></a>
-				<p>AN UNOFFICIAL FAN-MADE ARCHIVE. NEED FOR SPEED AND ALL RELATED MARKS BELONG TO THEIR RESPECTIVE OWNERS.</p>
-				<a class="back-top" href="#top">BACK TO TOP ↑</a>
-			</div>
-		</footer>
+		<SiteFooter />
 
 		<div id="music-player" class="music-player" aria-hidden="true"></div>
 		<p id="music-status" class="visually-hidden" aria-live="polite">Trying to start background music.</p>
 		<script is:inline>
-			const menuButton = document.querySelector("#menu-toggle");
-			const siteHeader = document.querySelector(".site-header");
-			if (menuButton && siteHeader) {
-				function closeNavigation() {
-					siteHeader.classList.remove("menu-open");
-					menuButton.setAttribute("aria-expanded", "false");
-					menuButton.setAttribute("aria-label", "Open navigation menu");
-				}
-
-				menuButton.addEventListener("click", () => {
-					const isOpen = menuButton.getAttribute("aria-expanded") === "true";
-					siteHeader.classList.toggle("menu-open", !isOpen);
-					menuButton.setAttribute("aria-expanded", String(!isOpen));
-					menuButton.setAttribute("aria-label", isOpen ? "Open navigation menu" : "Close navigation menu");
-				});
-				siteHeader.querySelectorAll(".main-nav a").forEach((link) => link.addEventListener("click", closeNavigation));
-				document.addEventListener("keydown", (event) => {
-					if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
-						closeNavigation();
-						menuButton.focus();
-					}
-				});
-				window.matchMedia("(min-width: 761px)").addEventListener("change", (event) => {
-					if (event.matches) closeNavigation();
-				});
-			}
-
 			const introSplash = document.querySelector("#intro-splash");
 			if (introSplash) window.setTimeout(() => introSplash.remove(), 3500);
 
@@ -300,5 +237,4 @@ const specs = [
 			youtubeApi.async = true;
 			document.head.append(youtubeApi);
 		</script>
-	</body>
-</html>
+	</SiteLayout>
